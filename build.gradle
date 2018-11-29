@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.9.4')
     implementation('com.github.everit-org.json-schema:org.everit.json.schema:1.9.2')
     implementation('org.springframework.boot:spring-boot-starter')
     implementation('commons-io:commons-io:2.6')
