@@ -1,11 +1,14 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChecklistMatches {
 
     private final Sample sample;
-    private final Checklist[] checklists;
+    private final List<Checklist> checklists;
 
-    public ChecklistMatches(Sample sample, Checklist[] checklists) {
+    public ChecklistMatches(Sample sample, List<Checklist> checklists) {
         this.sample = sample;
         this.checklists = checklists;
     }
@@ -14,7 +17,7 @@ public class ChecklistMatches {
         return sample;
     }
 
-    public Checklist[] getChecklists() {
+    public List<Checklist> getChecklists() {
         return checklists;
     }
 }

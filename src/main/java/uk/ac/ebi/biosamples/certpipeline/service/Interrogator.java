@@ -1,10 +1,16 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
+import org.everit.json.schema.ValidationException;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.ConfigLoader;
 import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
 import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class Interrogator {
@@ -18,6 +24,17 @@ public class Interrogator {
     }
 
     public ChecklistMatches interrogate(Sample sample) {
-        return new ChecklistMatches(sample, new Checklist[]{});
+        List<Checklist> matches = new ArrayList<>();
+        for (Checklist checklist : configLoader.config.getChecklists()) {
+            try {
+                validator.validate(checklist.getFileName(), sample.getDocument());
+                matches.add(checklist);
+            } catch (IOException ioe) {
+
+            } catch(ValidationException ve){
+                ve.printStackTrace();
+            }
+        }
+        return new ChecklistMatches(sample, matches);
     }
 }

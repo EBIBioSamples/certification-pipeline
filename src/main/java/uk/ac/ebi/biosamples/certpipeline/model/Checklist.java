@@ -31,6 +31,9 @@ public class Checklist {
         return fileName;
     }
 
+    public String getID() {
+        return String.format("%s-%s", name, version);
+    }
 
     public void setName(String name) {
         this.name = name;
