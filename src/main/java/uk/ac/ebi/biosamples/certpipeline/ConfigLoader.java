@@ -23,11 +23,8 @@ public class ConfigLoader {
     public void init() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            System.out.println(configFile);
             // Convert JSON string from file to Object
             config = mapper.readValue(this.getClass().getClassLoader().getResourceAsStream(configFile), Config.class);
-            System.out.println(config);
-            System.out.println(configFile);
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {

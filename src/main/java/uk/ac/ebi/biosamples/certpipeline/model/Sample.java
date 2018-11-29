@@ -1,13 +1,19 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sample {
 
-    private final String accession;
-    private final String document;
+    private String accession;
+    private String document;
 
     public Sample(String accession, String document) {
         this.accession = accession;
         this.document = document;
+    }
+
+    public Sample() {
     }
 
     public String getAccession() {
@@ -16,5 +22,13 @@ public class Sample {
 
     public String getDocument() {
         return document;
+    }
+
+    public void setAccession(String accession) {
+        this.accession = accession;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
     }
 }
