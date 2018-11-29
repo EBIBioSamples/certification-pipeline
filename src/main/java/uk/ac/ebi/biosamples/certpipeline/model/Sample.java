@@ -31,4 +31,12 @@ public class Sample {
     public void setDocument(String document) {
         this.document = document;
     }
+
+    @Override
+    public String toString() {
+        return "Sample{" +
+                "accession='" + accession + '\'' +
+                ", document='" + document + '\'' +
+                '}';
+    }
 }

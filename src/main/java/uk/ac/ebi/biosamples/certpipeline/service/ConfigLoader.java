@@ -1,17 +1,18 @@
-package uk.ac.ebi.biosamples.certpipeline;
+package uk.ac.ebi.biosamples.certpipeline.service;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.Config;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
-@Component
+@Service
 public class ConfigLoader {
 
     @Value("${pipeline.config}")

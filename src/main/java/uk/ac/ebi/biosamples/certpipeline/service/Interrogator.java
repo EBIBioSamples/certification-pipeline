@@ -2,14 +2,12 @@ package uk.ac.ebi.biosamples.certpipeline.service;
 
 import org.everit.json.schema.ValidationException;
 import org.springframework.stereotype.Service;
-import uk.ac.ebi.biosamples.certpipeline.ConfigLoader;
 import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
 import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service

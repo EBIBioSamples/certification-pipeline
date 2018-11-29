@@ -20,4 +20,12 @@ public class ChecklistMatches {
     public List<Checklist> getChecklists() {
         return checklists;
     }
+
+    @Override
+    public String toString() {
+        return "ChecklistMatches{" +
+                "sample=" + sample +
+                ", checklists=" + checklists +
+                '}';
+    }
 }
