@@ -1,6 +1,8 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
 import org.everit.json.schema.ValidationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
 import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Service
 public class Interrogator {
+
+    private static Logger LOG = LoggerFactory.getLogger(Certifier.class);
+    private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     private ConfigLoader configLoader;
     private Validator validator;
@@ -26,11 +31,12 @@ public class Interrogator {
         for (Checklist checklist : configLoader.config.getChecklists()) {
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
+                EVENTS.info(String.format("identification successful for %s against %s", sample.getAccession(), checklist.getID()));
                 matches.add(checklist);
             } catch (IOException ioe) {
-
-            } catch(ValidationException ve){
-                ve.printStackTrace();
+                LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
+            } catch (ValidationException ve) {
+                EVENTS.info(String.format("identification failed for %s against %s", sample.getAccession(), checklist.getID()));
             }
         }
         return new ChecklistMatches(sample, matches);

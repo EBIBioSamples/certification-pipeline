@@ -1,6 +1,5 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
-import org.apache.commons.io.IOUtils;
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
