@@ -1,11 +1,7 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
-import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
-
-import java.util.List;
+import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
 
 @Service
 public class Pipeline {
@@ -16,13 +12,16 @@ public class Pipeline {
 
     private Curator curator;
 
-    public Pipeline(Curator curator, Identifier identifier, Interrogator interrogator) {
+    private Certifier certifier;
+
+    public Pipeline(Certifier certifier, Curator curator, Identifier identifier, Interrogator interrogator) {
+        this.certifier = certifier;
         this.curator = curator;
         this.identifier = identifier;
         this.interrogator = interrogator;
     }
 
-    public List<PlanResult> run(String data) {
-        return curator.runCurationPlans(interrogator.interrogate(identifier.identify(data)));
+    public Certificate run(String data) {
+        return certifier.certify(curator.runCurationPlans(interrogator.interrogate(identifier.identify(data))));
     }
 }

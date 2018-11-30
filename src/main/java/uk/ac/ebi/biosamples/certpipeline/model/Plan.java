@@ -16,6 +16,15 @@ public class Plan {
 
     private List<Curation> curations;
 
+    public Plan(String candidateChecklistID, String certificationChecklistID, List<Curation> curations) {
+        this.candidateChecklistID = candidateChecklistID;
+        this.certificationChecklistID = certificationChecklistID;
+        this.curations = curations;
+    }
+
+    private Plan() {
+
+    }
 
     public String getCandidateChecklistID() {
         return candidateChecklistID;

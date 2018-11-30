@@ -13,11 +13,10 @@ import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
+import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -34,8 +33,8 @@ public class CuratorTest {
         List<Checklist> checklistList = new ArrayList<>();
         checklistList = Collections.singletonList(new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json"));
         ChecklistMatches checklistMatches = new ChecklistMatches(sample, checklistList);
-        List<PlanResult> planResults = curator.runCurationPlans(checklistMatches);
-        assertFalse(planResults.isEmpty());
+        PlanResult planResult = curator.runCurationPlans(checklistMatches);
+        assertNotNull(planResult.getSample());
     }
 
 }

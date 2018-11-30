@@ -20,15 +20,15 @@ public class Curator {
         this.configLoader = configLoader;
     }
 
-    public List<PlanResult> runCurationPlans(ChecklistMatches checklistMatches) {
+    public PlanResult runCurationPlans(ChecklistMatches checklistMatches) {
         List<PlanResult> planResults = new ArrayList<>();
         if (checklistMatches.getChecklists().isEmpty()) {
-            return planResults;
+            return null;
         }
         for (Checklist checklist : checklistMatches.getChecklists()) {
             planResults.add(runCurationPlan(checklist, checklistMatches.getSample()));
         }
-        return planResults;
+        return planResults.get(0);
     }
 
     private PlanResult runCurationPlan(Checklist checklist, Sample sample) {

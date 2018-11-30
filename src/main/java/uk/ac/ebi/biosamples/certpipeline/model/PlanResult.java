@@ -2,13 +2,21 @@ package uk.ac.ebi.biosamples.certpipeline.model;
 
 public class PlanResult {
 
-    final Sample sample;
+    private final Sample sample;
 
-    final Plan plan;
+    private final Plan plan;
 
     public PlanResult(Sample sample, Plan plan) {
         this.sample = sample;
         this.plan = plan;
+    }
+
+    public Sample getSample() {
+        return sample;
+    }
+
+    public Plan getPlan() {
+        return plan;
     }
 
     @Override
