@@ -14,7 +14,7 @@ import java.io.IOException;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
 public class IdentifierTest {
 
     @Autowired

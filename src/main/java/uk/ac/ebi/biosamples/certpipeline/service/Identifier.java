@@ -1,7 +1,8 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
@@ -11,6 +12,8 @@ import java.util.UUID;
 @Service
 public class Identifier {
 
+    private static Logger eventsLogger = LoggerFactory.getLogger("events");
+
     public Sample identify(String data) {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -18,8 +21,9 @@ public class Identifier {
             sample.setDocument(data);
             return sample;
         } catch (IOException e) {
-            e.printStackTrace();
-            return new Sample(UUID.randomUUID().toString(), data);
+            String uuid = UUID.randomUUID().toString();
+            eventsLogger.info("could not identify sample, assigned UUID %s", uuid);
+            return new Sample(uuid, data);
         }
     }
 }

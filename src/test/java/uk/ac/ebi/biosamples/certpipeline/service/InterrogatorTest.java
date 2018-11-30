@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
 public class InterrogatorTest {
 
     @Autowired

@@ -17,7 +17,7 @@ import java.util.Collections;
 import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
 public class CertifierTest {
 
     @Autowired

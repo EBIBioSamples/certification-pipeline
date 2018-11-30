@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import uk.ac.ebi.biosamples.certpipeline.Application;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
 public class ValidatorTest {
 
     @Autowired

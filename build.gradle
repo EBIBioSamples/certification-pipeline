@@ -29,5 +29,6 @@ dependencies {
     implementation('com.github.everit-org.json-schema:org.everit.json.schema:1.9.2')
     implementation('org.springframework.boot:spring-boot-starter')
     implementation('commons-io:commons-io:2.6')
+    implementation('de.siegmar:logback-gelf:1.1.0')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
