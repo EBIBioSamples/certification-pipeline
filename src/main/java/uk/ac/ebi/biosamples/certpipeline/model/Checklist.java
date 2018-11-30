@@ -49,10 +49,6 @@ public class Checklist {
 
     @Override
     public String toString() {
-        return "Checklist{" +
-                "name='" + name + '\'' +
-                ", version='" + version + '\'' +
-                ", fileName='" + fileName + '\'' +
-                '}';
+        return getID();
     }
 }

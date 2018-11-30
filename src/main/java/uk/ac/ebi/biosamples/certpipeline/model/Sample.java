@@ -34,9 +34,6 @@ public class Sample {
 
     @Override
     public String toString() {
-        return "Sample{" +
-                "accession='" + accession + '\'' +
-                ", document='" + document + '\'' +
-                '}';
+        return getAccession();
     }
 }
