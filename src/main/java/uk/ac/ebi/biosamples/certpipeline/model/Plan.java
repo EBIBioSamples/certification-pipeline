@@ -11,8 +11,8 @@ public class Plan {
     @JsonProperty(value = "candidate_checklist_id")
     private String candidateChecklistID;
 
-    @JsonProperty(value = "certificate_checklist_id")
-    private String certificateChecklistID;
+    @JsonProperty(value = "certification_checklist_id")
+    private String certificationChecklistID;
 
     private List<Curation> curations;
 
@@ -25,12 +25,12 @@ public class Plan {
         this.candidateChecklistID = candidateChecklistID;
     }
 
-    public String getCertificateChecklistID() {
-        return certificateChecklistID;
+    public String getCertificationChecklistID() {
+        return certificationChecklistID;
     }
 
-    public void setCertificateChecklistID(String certificateChecklistID) {
-        this.certificateChecklistID = certificateChecklistID;
+    public void setCertificationChecklistID(String certificationChecklistID) {
+        this.certificationChecklistID = certificationChecklistID;
     }
 
     public List<Curation> getCurations() {
@@ -44,5 +44,13 @@ public class Plan {
     public Sample applyCuration(Sample sample, Curation curation) {
         Sample curatedSample = sample;
         return curatedSample;
+    }
+
+    @Override
+    public String toString() {
+        return "Plan{" +
+                "candidateChecklistID='" + candidateChecklistID + '\'' +
+                ", certificationChecklistID='" + certificationChecklistID + '\'' +
+                '}';
     }
 }

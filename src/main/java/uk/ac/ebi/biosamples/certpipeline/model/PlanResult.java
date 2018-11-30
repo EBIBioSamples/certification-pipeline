@@ -10,4 +10,12 @@ public class PlanResult {
         this.sample = sample;
         this.plan = plan;
     }
+
+    @Override
+    public String toString() {
+        return "PlanResult{" +
+                "sample=" + sample +
+                ", plan=" + plan +
+                '}';
+    }
 }
