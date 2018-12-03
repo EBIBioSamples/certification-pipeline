@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'jacoco'
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
