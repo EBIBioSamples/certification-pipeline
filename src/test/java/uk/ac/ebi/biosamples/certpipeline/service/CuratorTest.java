@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
@@ -30,11 +32,15 @@ public class CuratorTest {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
         String curatedData = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263-curated.json"), "UTF8");
         Sample sample = new Sample("test", data);
+        Sample curatedSample = new Sample("test", curatedData);
         List<Checklist> checklistList = new ArrayList<>();
         checklistList = Collections.singletonList(new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json"));
         ChecklistMatches checklistMatches = new ChecklistMatches(sample, checklistList);
         PlanResult planResult = curator.runCurationPlans(checklistMatches);
         assertNotNull(planResult.getSample());
+        assertFalse(planResult.getCurationResults().isEmpty());
+        assertEquals("live", planResult.getCurationResults().get(0).getBefore());
+        assertEquals("public", planResult.getCurationResults().get(0).getAfter());
     }
 
 }

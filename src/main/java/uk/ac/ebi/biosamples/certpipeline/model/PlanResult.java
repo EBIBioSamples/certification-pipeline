@@ -1,14 +1,28 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlanResult {
 
     private final Sample sample;
 
     private final Plan plan;
 
+    private final List<CurationResult> curationResults;
+
     public PlanResult(Sample sample, Plan plan) {
         this.sample = sample;
         this.plan = plan;
+        this.curationResults = new ArrayList<>();
+    }
+
+    public void addCurationResult(CurationResult curationResult) {
+        curationResults.add(curationResult);
+    }
+
+    public List<CurationResult> getCurationResults() {
+        return curationResults;
     }
 
     public Sample getSample() {

@@ -1,11 +1,13 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.json.JSONObject;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sample {
 
     private String accession;
+
     private String document;
 
     public Sample(String accession, String document) {

@@ -26,7 +26,10 @@ public class Curator {
             return null;
         }
         for (Checklist checklist : checklistMatches.getChecklists()) {
-            planResults.add(runCurationPlan(checklist, checklistMatches.getSample()));
+            PlanResult planResult = runCurationPlan(checklist, checklistMatches.getSample());
+            if (planResult != null) {
+                planResults.add(planResult);
+            }
         }
         return planResults.get(0);
     }
@@ -34,13 +37,16 @@ public class Curator {
     private PlanResult runCurationPlan(Checklist checklist, Sample sample) {
         if (plansByCandidateChecklistID.containsKey(checklist.getID())) {
             Plan plan = plansByCandidateChecklistID.get(checklist.getID());
-            Sample curatedSample = sample;
+            PlanResult planResult = new PlanResult(sample, plan);
             for (Curation curation : plan.getCurations()) {
-                curatedSample = plan.applyCuration(curatedSample, curation);
+                CurationResult curationResult = plan.applyCuration(sample, curation);
+                if (curationResult != null) {
+                    planResult.addCurationResult(curationResult);
+                }
             }
-            return new PlanResult(curatedSample, plan);
+            return planResult;
         }
-        return new PlanResult(sample, null);
+        return null;
     }
 
     @PostConstruct

@@ -2,6 +2,8 @@ package uk.ac.ebi.biosamples.certpipeline.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -50,9 +52,16 @@ public class Plan {
         this.curations = curations;
     }
 
-    public Sample applyCuration(Sample sample, Curation curation) {
-        Sample curatedSample = sample;
-        return curatedSample;
+    public CurationResult applyCuration(Sample sample, Curation curation) {
+        JSONObject jsonObject = new JSONObject(sample.getDocument());
+        JSONObject characteristics = jsonObject.getJSONObject("characteristics");
+        if (characteristics.has(curation.getCharacteristic())) {
+            JSONArray jsonArray = characteristics.getJSONArray(curation.getCharacteristic());
+            String before = jsonArray.getJSONObject(0).getString("text");
+            CurationResult curationResult = new CurationResult(curation.getCharacteristic(), before, curation.getValue());
+            return curationResult;
+        }
+        return null;
     }
 
     @Override
@@ -62,4 +71,6 @@ public class Plan {
                 ", certificationChecklistID='" + certificationChecklistID + '\'' +
                 '}';
     }
+
+
 }
