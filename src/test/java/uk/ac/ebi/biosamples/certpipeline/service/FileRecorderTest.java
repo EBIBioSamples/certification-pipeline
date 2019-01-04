@@ -10,8 +10,8 @@ import uk.ac.ebi.biosamples.certpipeline.Application;
 import uk.ac.ebi.biosamples.certpipeline.model.*;
 
 import java.io.IOException;
+import java.util.Collections;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -27,7 +27,7 @@ public class FileRecorderTest {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
         Sample sample = new Sample("test-uuid", data);
         Checklist checklist = new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json");
-        Certificate certificate = new Certificate(sample, "sample-hash", checklist, "checklist-hash");
+        Certificate certificate = new Certificate(sample, Collections.emptyList(), checklist);
         CertificationResult certificationResult = new CertificationResult();
         certificationResult.add(certificate);
         RecorderResult recorderResult = recorder.record(certificationResult);

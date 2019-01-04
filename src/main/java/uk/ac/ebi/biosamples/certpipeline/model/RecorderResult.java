@@ -15,4 +15,11 @@ public class RecorderResult {
         certificates.add(certificate);
     }
 
+    @Override
+    public String toString() {
+        return "RecorderResult{" +
+                "certificates=" + certificates +
+                '}';
+    }
+
 }

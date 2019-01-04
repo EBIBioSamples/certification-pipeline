@@ -1,45 +1,35 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
+import java.util.List;
+
 public class Certificate {
 
     private final Sample sample;
 
-    private final String sampleHash;
+    private final List<CurationResult> curationsResults;
 
     private final Checklist checklist;
 
-    private final String checklistHash;
-
-    public Certificate(Sample sample, String sampleHash, Checklist checklist, String checklistHash) {
+    public Certificate(Sample sample, List<CurationResult> curationsResults, Checklist checklist) {
         this.sample = sample;
-        this.sampleHash = sampleHash;
+        this.curationsResults = curationsResults;
         this.checklist = checklist;
-        this.checklistHash = checklistHash;
     }
 
     public Sample getSample() {
         return sample;
     }
 
-    public String getSampleHash() {
-        return sampleHash;
-    }
-
     public Checklist getChecklist() {
         return checklist;
-    }
-
-    public String getChecklistHash() {
-        return checklistHash;
     }
 
     @Override
     public String toString() {
         return "Certificate{" +
                 "sample=" + sample +
-                ", sampleHash='" + sampleHash + '\'' +
+                ", curationsResults=" + curationsResults +
                 ", checklist=" + checklist +
-                ", checklistHash='" + checklistHash + '\'' +
                 '}';
     }
 }

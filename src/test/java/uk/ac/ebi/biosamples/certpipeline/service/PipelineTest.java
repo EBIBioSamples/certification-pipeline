@@ -29,6 +29,5 @@ public class PipelineTest {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
         RecorderResult recorderResult = pipeline.run(data);
         assertNotNull(recorderResult);
-        System.out.println(recorderResult);
     }
 }

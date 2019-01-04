@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 public class Identifier {
 
-    private static Logger eventsLogger = LoggerFactory.getLogger("events");
+    private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     public Sample identify(String data) {
         if (data == null) {
@@ -24,11 +24,11 @@ public class Identifier {
         try {
             Sample sample = mapper.readValue(data, Sample.class);
             sample.setDocument(data);
+            EVENTS.info(String.format("%s identification successful", sample.getAccession()));
             return sample;
         } catch (IOException e) {
-            e.printStackTrace();
             String uuid = UUID.randomUUID().toString();
-            eventsLogger.info("could not identify sample, assigned UUID %s", uuid);
+            EVENTS.info(String.format("%s identification failed for sample, assigned UUID", uuid));
             return new Sample(uuid, data);
         }
     }

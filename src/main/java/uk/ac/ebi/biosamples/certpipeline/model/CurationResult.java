@@ -36,4 +36,13 @@ public class CurationResult {
         return after;
     }
 
+    @Override
+    public String toString() {
+        return "CurationResult{" +
+                "characteristic='" + characteristic + '\'' +
+                ", before='" + before + '\'' +
+                ", after='" + after + '\'' +
+                ", applied=" + applied +
+                '}';
+    }
 }

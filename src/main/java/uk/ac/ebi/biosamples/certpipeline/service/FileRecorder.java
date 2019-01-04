@@ -15,6 +15,7 @@ import java.util.List;
 public class FileRecorder implements Recorder {
 
     private static Logger LOG = LoggerFactory.getLogger(FileRecorder.class);
+    private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     @Override
     public RecorderResult record(CertificationResult certificationResult) {
@@ -23,7 +24,7 @@ public class FileRecorder implements Recorder {
             throw new IllegalArgumentException("cannot record a null certification result");
         }
         for (Certificate certificate : certificationResult.getCertificates()) {
-            LOG.info("recorded: " + certificate.toString());
+            EVENTS.info(String.format("%s recorded %s certificate", certificate.getSample().getAccession(), certificate.getChecklist().getID()));
             recorderResult.add(certificate);
         }
         List<CurationResult> curations = Collections.EMPTY_LIST;

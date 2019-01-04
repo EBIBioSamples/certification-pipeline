@@ -34,12 +34,12 @@ public class Interrogator {
         for (Checklist checklist : configLoader.config.getChecklists()) {
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
-                EVENTS.info(String.format("interrogation successful for %s against %s", sample.getAccession(), checklist.getID()));
+                EVENTS.info(String.format("%s interrogation successful against %s", sample.getAccession(), checklist.getID()));
                 matches.add(checklist);
             } catch (IOException ioe) {
                 LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
             } catch (ValidationException ve) {
-                EVENTS.info(String.format("interrogation failed for %s against %s", sample.getAccession(), checklist.getID()));
+                EVENTS.info(String.format("%s interrogation failed against %s", sample.getAccession(), checklist.getID()));
             }
         }
         return new ChecklistMatches(sample, matches);

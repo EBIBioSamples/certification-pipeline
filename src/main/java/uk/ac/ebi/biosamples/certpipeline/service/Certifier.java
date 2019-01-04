@@ -31,12 +31,13 @@ public class Certifier {
             Sample sample = planResult.getSample();
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
-                EVENTS.info(String.format("certificate issued for %s against %s", sample.getAccession(), checklist.getID()));
-                certificationResult.add(new Certificate(sample, "", checklist, ""));
+                EVENTS.info(String.format("%s validation successful against %s", sample.getAccession(), checklist.getID()));
+                certificationResult.add(new Certificate(sample, planResult.getCurationResults(), checklist));
+                EVENTS.info(String.format("%s issued %s certificate", sample.getAccession(), checklist.getID()));
             } catch (IOException ioe) {
                 LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
             } catch (ValidationException ve) {
-                EVENTS.info(String.format("validation failed for %s against %s", sample.getAccession(), checklist.getID(), ve.getMessage()));
+                EVENTS.info(String.format("%s validation failed against %s", sample.getAccession(), checklist.getID(), ve.getMessage()));
             }
         }
         return certificationResult;
