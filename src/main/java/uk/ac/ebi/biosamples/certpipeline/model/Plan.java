@@ -54,14 +54,15 @@ public class Plan {
 
     public CurationResult applyCuration(Sample sample, Curation curation) {
         JSONObject jsonObject = new JSONObject(sample.getDocument());
-        JSONObject characteristics = jsonObject.getJSONObject("characteristics");
-        if (characteristics.has(curation.getCharacteristic())) {
-            JSONArray jsonArray = characteristics.getJSONArray(curation.getCharacteristic());
+        JSONObject sampleCharacteristics = jsonObject.getJSONObject("characteristics");
+        String targetCharateristic = curation.getCharacteristic();
+        if (sampleCharacteristics.has(targetCharateristic)) {
+            JSONArray jsonArray = sampleCharacteristics.getJSONArray(curation.getCharacteristic());
             String before = jsonArray.getJSONObject(0).getString("text");
-            CurationResult curationResult = new CurationResult(curation.getCharacteristic(), before, curation.getValue());
+            CurationResult curationResult = new CurationResult(targetCharateristic, before, curation.getValue());
             return curationResult;
         }
-        return null;
+        return new CurationResult(targetCharateristic);
     }
 
     @Override

@@ -41,4 +41,9 @@ public class InterrogatorTest {
         ChecklistMatches checklistMatches = interrogator.interrogate(sample);
         assertEquals(Collections.EMPTY_LIST, checklistMatches.getChecklists());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void given_null_sample_throw_exception() throws IOException {
+        interrogator.interrogate(null);
+    }
 }

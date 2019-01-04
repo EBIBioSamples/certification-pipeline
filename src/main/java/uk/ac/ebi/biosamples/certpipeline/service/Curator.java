@@ -21,6 +21,9 @@ public class Curator {
     }
 
     public PlanResult runCurationPlans(ChecklistMatches checklistMatches) {
+        if (checklistMatches == null) {
+            throw new IllegalArgumentException("cannot run curation plans on null checklist matches");
+        }
         List<PlanResult> planResults = new ArrayList<>();
         if (checklistMatches.getChecklists().isEmpty()) {
             return null;

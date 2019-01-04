@@ -12,6 +12,7 @@ import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
 import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -43,4 +44,8 @@ public class CuratorTest {
         assertEquals("public", planResult.getCurationResults().get(0).getAfter());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void given_null_checklistMatches_throw_exception() throws IOException {
+        curator.runCurationPlans(null);
+    }
 }

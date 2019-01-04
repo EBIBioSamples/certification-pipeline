@@ -1,7 +1,7 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
 import org.springframework.stereotype.Service;
-import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
+import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 
 @Service
 public class Pipeline {
@@ -14,14 +14,17 @@ public class Pipeline {
 
     private Certifier certifier;
 
-    public Pipeline(Certifier certifier, Curator curator, Identifier identifier, Interrogator interrogator) {
+    private Recorder recorder;
+
+    public Pipeline(Certifier certifier, Curator curator, Identifier identifier, Interrogator interrogator, Recorder recorder) {
         this.certifier = certifier;
         this.curator = curator;
         this.identifier = identifier;
         this.interrogator = interrogator;
+        this.recorder = recorder;
     }
 
-    public Certificate run(String data) {
-        return certifier.certify(curator.runCurationPlans(interrogator.interrogate(identifier.identify(data))));
+    public RecorderResult run(String data) {
+        return recorder.record(certifier.certify(curator.runCurationPlans(interrogator.interrogate(identifier.identify(data)))));
     }
 }

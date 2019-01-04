@@ -27,4 +27,9 @@ public class IdentifierTest {
         assertTrue(sample.getAccession().matches("SAM[END][AG]?[0-9]+"));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void given_null_sample_throw_exception() throws IOException {
+        identifier.identify(null);
+    }
+
 }

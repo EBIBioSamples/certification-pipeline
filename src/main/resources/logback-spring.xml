@@ -21,6 +21,7 @@
     </logger>
 
     <logger name="events" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="GELF"/>
     </logger>
 

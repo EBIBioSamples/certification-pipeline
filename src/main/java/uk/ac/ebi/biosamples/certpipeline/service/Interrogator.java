@@ -27,16 +27,19 @@ public class Interrogator {
     }
 
     public ChecklistMatches interrogate(Sample sample) {
+        if (sample == null) {
+            throw new IllegalArgumentException("cannot interrogate a null sample");
+        }
         List<Checklist> matches = new ArrayList<>();
         for (Checklist checklist : configLoader.config.getChecklists()) {
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
-                EVENTS.info(String.format("identification successful for %s against %s", sample.getAccession(), checklist.getID()));
+                EVENTS.info(String.format("interrogation successful for %s against %s", sample.getAccession(), checklist.getID()));
                 matches.add(checklist);
             } catch (IOException ioe) {
                 LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
             } catch (ValidationException ve) {
-                EVENTS.info(String.format("identification failed for %s against %s", sample.getAccession(), checklist.getID()));
+                EVENTS.info(String.format("interrogation failed for %s against %s", sample.getAccession(), checklist.getID()));
             }
         }
         return new ChecklistMatches(sample, matches);

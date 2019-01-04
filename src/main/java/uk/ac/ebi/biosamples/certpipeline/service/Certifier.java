@@ -4,10 +4,7 @@ import org.everit.json.schema.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
-import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
-import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
-import uk.ac.ebi.biosamples.certpipeline.model.Sample;
+import uk.ac.ebi.biosamples.certpipeline.model.*;
 
 import java.io.IOException;
 
@@ -25,20 +22,24 @@ public class Certifier {
         this.configLoader = configLoader;
     }
 
-    public Certificate certify(PlanResult planResult) {
+    public CertificationResult certify(PlanResult planResult) {
+        if (planResult == null) {
+            throw new IllegalArgumentException("cannot certify a null plan result");
+        }
+        CertificationResult certificationResult = new CertificationResult();
         for (Checklist checklist : configLoader.config.getChecklists()) {
             Sample sample = planResult.getSample();
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
-                Certificate certificate = new Certificate(sample, "", checklist, "");
-                return certificate;
+                EVENTS.info(String.format("certificate issued for %s against %s", sample.getAccession(), checklist.getID()));
+                certificationResult.add(new Certificate(sample, "", checklist, ""));
             } catch (IOException ioe) {
                 LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
             } catch (ValidationException ve) {
                 EVENTS.info(String.format("validation failed for %s against %s", sample.getAccession(), checklist.getID(), ve.getMessage()));
             }
         }
-        return null;
+        return certificationResult;
     }
 
 }

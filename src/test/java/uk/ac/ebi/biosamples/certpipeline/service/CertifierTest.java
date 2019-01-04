@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.ac.ebi.biosamples.certpipeline.Application;
-import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
+import uk.ac.ebi.biosamples.certpipeline.model.CertificationResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Plan;
 import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
+import java.io.IOException;
 import java.util.Collections;
 
 import static junit.framework.TestCase.assertNotNull;
@@ -29,7 +30,12 @@ public class CertifierTest {
         Sample sample = new Sample("test-uuid", data);
         Plan plan = new Plan("ncbi-0.0.1", "biosamples-0.0.1", Collections.EMPTY_LIST);
         PlanResult planResult = new PlanResult(sample, plan);
-        Certificate certificate = certifier.certify(planResult);
-        assertNotNull(certificate);
+        CertificationResult certificationResult = certifier.certify(planResult);
+        assertNotNull(certificationResult);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void given_null_planResult_throw_exception() throws IOException {
+        certifier.certify(null);
     }
 }

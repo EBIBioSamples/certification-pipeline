@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import uk.ac.ebi.biosamples.certpipeline.Application;
 import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
 import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
+import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,9 +27,8 @@ public class PipelineTest {
     @Test
     public void given_ncbi_sample_run_pipeline() throws IOException {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
-        Certificate certificate = pipeline.run(data);
-        assertNotNull(certificate.getSample());
-        assertNotNull(certificate.getChecklist());
-        System.out.println(certificate.toString());
+        RecorderResult recorderResult = pipeline.run(data);
+        assertNotNull(recorderResult);
+        System.out.println(recorderResult);
     }
 }
