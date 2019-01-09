@@ -1,7 +1,7 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.json.JSONObject;
+import org.springframework.util.DigestUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sample {
@@ -10,9 +10,12 @@ public class Sample {
 
     private String document;
 
+    private String hash;
+
     public Sample(String accession, String document) {
         this.accession = accession;
         this.document = document;
+        this.hash = DigestUtils.md5DigestAsHex(this.document.getBytes()).toUpperCase();
     }
 
     public Sample() {
@@ -36,6 +39,14 @@ public class Sample {
 
     @Override
     public String toString() {
-        return getAccession();
+        return "Sample{" +
+                "accession='" + accession + '\'' +
+                ", document='" + document + '\'' +
+                ", hash='" + hash + '\'' +
+                '}';
+    }
+
+    public String getHash() {
+        return hash;
     }
 }

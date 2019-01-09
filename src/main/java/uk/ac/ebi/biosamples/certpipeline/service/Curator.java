@@ -1,5 +1,7 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.*;
 
@@ -11,6 +13,8 @@ import java.util.Map;
 
 @Service
 public class Curator {
+
+    private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     private ConfigLoader configLoader;
 
@@ -38,18 +42,18 @@ public class Curator {
     }
 
     private PlanResult runCurationPlan(Checklist checklist, Sample sample) {
+        Plan plan = plansByCandidateChecklistID.get(checklist.getID());
+        PlanResult planResult = new PlanResult(sample, plan);
         if (plansByCandidateChecklistID.containsKey(checklist.getID())) {
-            Plan plan = plansByCandidateChecklistID.get(checklist.getID());
-            PlanResult planResult = new PlanResult(sample, plan);
             for (Curation curation : plan.getCurations()) {
                 CurationResult curationResult = plan.applyCuration(sample, curation);
                 if (curationResult != null) {
                     planResult.addCurationResult(curationResult);
                 }
             }
-            return planResult;
         }
-        return null;
+        EVENTS.info(String.format("%s plan %s run", sample.getAccession(), plan.getID()));
+        return planResult;
     }
 
     @PostConstruct

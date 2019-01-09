@@ -9,6 +9,15 @@ public class Curation {
 
     private String value;
 
+    public Curation(String characteristic, String value) {
+        this.characteristic = characteristic;
+        this.value = value;
+    }
+
+    private Curation() {
+
+    }
+
     public String getCharacteristic() {
         return characteristic;
     }

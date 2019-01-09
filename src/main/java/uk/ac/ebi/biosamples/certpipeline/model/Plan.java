@@ -28,6 +28,10 @@ public class Plan {
 
     }
 
+    public String getID() {
+        return String.format("%s -> %s", candidateChecklistID, certificationChecklistID);
+    }
+
     public String getCandidateChecklistID() {
         return candidateChecklistID;
     }

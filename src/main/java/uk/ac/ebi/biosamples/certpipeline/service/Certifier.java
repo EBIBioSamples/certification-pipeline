@@ -16,10 +16,12 @@ public class Certifier {
 
     private ConfigLoader configLoader;
     private Validator validator;
+    private Applicator applicator;
 
-    public Certifier(ConfigLoader configLoader, Validator validator) {
+    public Certifier(ConfigLoader configLoader, Validator validator, Applicator applicator) {
         this.validator = validator;
         this.configLoader = configLoader;
+        this.applicator = applicator;
     }
 
     public CertificationResult certify(PlanResult planResult) {
@@ -28,7 +30,7 @@ public class Certifier {
         }
         CertificationResult certificationResult = new CertificationResult();
         for (Checklist checklist : configLoader.config.getChecklists()) {
-            Sample sample = planResult.getSample();
+            Sample sample = applicator.apply(planResult);
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
                 EVENTS.info(String.format("%s validation successful against %s", sample.getAccession(), checklist.getID()));
