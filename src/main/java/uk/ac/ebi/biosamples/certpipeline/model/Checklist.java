@@ -1,5 +1,6 @@
 package uk.ac.ebi.biosamples.certpipeline.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Checklist {
@@ -27,10 +28,12 @@ public class Checklist {
         return version;
     }
 
+    @JsonIgnore
     public String getFileName() {
         return fileName;
     }
 
+    @JsonIgnore
     public String getID() {
         return String.format("%s-%s", name, version);
     }

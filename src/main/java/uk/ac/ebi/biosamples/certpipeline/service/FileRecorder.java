@@ -1,15 +1,16 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
 import uk.ac.ebi.biosamples.certpipeline.model.CertificationResult;
-import uk.ac.ebi.biosamples.certpipeline.model.CurationResult;
 import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 
-import java.util.Collections;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 @Service
 public class FileRecorder implements Recorder {
@@ -27,7 +28,14 @@ public class FileRecorder implements Recorder {
             EVENTS.info(String.format("%s recorded %s certificate", certificate.getSample().getAccession(), certificate.getChecklist().getID()));
             recorderResult.add(certificate);
         }
-        List<CurationResult> curations = Collections.EMPTY_LIST;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        String fileName = certificationResult.getSampleAccession() + "-certification.json";
+        try {
+            objectMapper.writeValue(new File(fileName), certificationResult);
+        } catch (IOException e) {
+            LOG.error(String.format("failed to write file for %s", fileName));
+        }
         return recorderResult;
     }
 }

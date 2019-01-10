@@ -24,16 +24,16 @@ public class Curator {
         this.configLoader = configLoader;
     }
 
-    public PlanResult runCurationPlans(ChecklistMatches checklistMatches) {
-        if (checklistMatches == null) {
+    public PlanResult runCurationPlans(InterrogationResult interrogationResult) {
+        if (interrogationResult == null) {
             throw new IllegalArgumentException("cannot run curation plans on null checklist matches");
         }
         List<PlanResult> planResults = new ArrayList<>();
-        if (checklistMatches.getChecklists().isEmpty()) {
+        if (interrogationResult.getChecklists().isEmpty()) {
             return null;
         }
-        for (Checklist checklist : checklistMatches.getChecklists()) {
-            PlanResult planResult = runCurationPlan(checklist, checklistMatches.getSample());
+        for (Checklist checklist : interrogationResult.getChecklists()) {
+            PlanResult planResult = runCurationPlan(checklist, interrogationResult.getSample());
             if (planResult != null) {
                 planResults.add(planResult);
             }

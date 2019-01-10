@@ -24,3 +24,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/test-uuid
+/test-uuid-certification.json
+/SAMN03894263
+/SAMN03894263-certification.json

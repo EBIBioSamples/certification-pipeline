@@ -7,15 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.ac.ebi.biosamples.certpipeline.Application;
-import uk.ac.ebi.biosamples.certpipeline.model.Certificate;
-import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 
 import java.io.IOException;
-import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, properties = {"job.autorun.enabled=false"})
@@ -29,5 +25,6 @@ public class PipelineTest {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
         RecorderResult recorderResult = pipeline.run(data);
         assertNotNull(recorderResult);
+        System.out.println(recorderResult);
     }
 }

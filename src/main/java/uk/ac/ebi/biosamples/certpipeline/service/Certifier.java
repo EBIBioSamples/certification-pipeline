@@ -28,9 +28,9 @@ public class Certifier {
         if (planResult == null) {
             throw new IllegalArgumentException("cannot certify a null plan result");
         }
-        CertificationResult certificationResult = new CertificationResult();
+        Sample sample = applicator.apply(planResult);
+        CertificationResult certificationResult = new CertificationResult(sample.getAccession());
         for (Checklist checklist : configLoader.config.getChecklists()) {
-            Sample sample = applicator.apply(planResult);
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
                 EVENTS.info(String.format("%s validation successful against %s", sample.getAccession(), checklist.getID()));

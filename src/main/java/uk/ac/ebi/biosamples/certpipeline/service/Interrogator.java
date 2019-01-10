@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
-import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
+import uk.ac.ebi.biosamples.certpipeline.model.InterrogationResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class Interrogator {
         this.configLoader = configLoader;
     }
 
-    public ChecklistMatches interrogate(Sample sample) {
+    public InterrogationResult interrogate(Sample sample) {
         if (sample == null) {
             throw new IllegalArgumentException("cannot interrogate a null sample");
         }
@@ -42,6 +42,6 @@ public class Interrogator {
                 EVENTS.info(String.format("%s interrogation failed against %s", sample.getAccession(), checklist.getID()));
             }
         }
-        return new ChecklistMatches(sample, matches);
+        return new InterrogationResult(sample, matches);
     }
 }

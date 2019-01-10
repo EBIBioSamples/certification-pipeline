@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.ac.ebi.biosamples.certpipeline.Application;
 import uk.ac.ebi.biosamples.certpipeline.model.Checklist;
-import uk.ac.ebi.biosamples.certpipeline.model.ChecklistMatches;
+import uk.ac.ebi.biosamples.certpipeline.model.InterrogationResult;
 import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
@@ -34,8 +34,8 @@ public class CuratorTest {
         Sample sample = new Sample("test", data);
         List<Checklist> checklistList = new ArrayList<>();
         checklistList = Collections.singletonList(new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json"));
-        ChecklistMatches checklistMatches = new ChecklistMatches(sample, checklistList);
-        PlanResult planResult = curator.runCurationPlans(checklistMatches);
+        InterrogationResult interrogationResult = new InterrogationResult(sample, checklistList);
+        PlanResult planResult = curator.runCurationPlans(interrogationResult);
         assertNotNull(planResult.getSample());
         assertFalse(planResult.getCurationResults().isEmpty());
         assertEquals("live", planResult.getCurationResults().get(0).getBefore());

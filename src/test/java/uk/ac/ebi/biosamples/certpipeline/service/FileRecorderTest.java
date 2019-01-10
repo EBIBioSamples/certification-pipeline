@@ -28,7 +28,7 @@ public class FileRecorderTest {
         Sample sample = new Sample("test-uuid", data);
         Checklist checklist = new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json");
         Certificate certificate = new Certificate(sample, Collections.emptyList(), checklist);
-        CertificationResult certificationResult = new CertificationResult();
+        CertificationResult certificationResult = new CertificationResult(sample.getAccession());
         certificationResult.add(certificate);
         RecorderResult recorderResult = recorder.record(certificationResult);
         assertNotNull(recorderResult);
