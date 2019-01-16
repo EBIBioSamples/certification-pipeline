@@ -36,6 +36,6 @@ public class CertifierTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void given_null_planResult_throw_exception() throws IOException {
-        certifier.certify(null);
+        certifier.certify((Sample) null);
     }
 }

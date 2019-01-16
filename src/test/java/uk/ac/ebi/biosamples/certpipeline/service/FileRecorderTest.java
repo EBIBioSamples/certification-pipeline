@@ -30,7 +30,7 @@ public class FileRecorderTest {
         Certificate certificate = new Certificate(sample, Collections.emptyList(), checklist);
         CertificationResult certificationResult = new CertificationResult(sample.getAccession());
         certificationResult.add(certificate);
-        RecorderResult recorderResult = recorder.record(certificationResult);
+        RecorderResult recorderResult = recorder.record(Collections.singleton(certificationResult));
         assertNotNull(recorderResult);
         assertEquals(certificate, recorderResult.getCertificates().get(0));
     }

@@ -24,6 +24,10 @@ public class CurationResult {
         this.after = after;
     }
 
+    public boolean isApplied() {
+        return applied;
+    }
+
     public String getCharacteristic() {
         return characteristic;
     }

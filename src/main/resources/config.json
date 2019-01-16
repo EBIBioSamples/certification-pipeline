@@ -3,7 +3,7 @@
     {
       "name": "biosamples",
       "version": "0.0.1",
-      "file": "schemas/biosamples-schema.json"
+      "file": "schemas/biosamples-basic.json"
     },
     {
       "name": "ncbi",

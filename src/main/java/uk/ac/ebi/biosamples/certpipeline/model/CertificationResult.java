@@ -32,5 +32,4 @@ public class CertificationResult {
     public List<Certificate> getCertificates() {
         return certificates;
     }
-
 }

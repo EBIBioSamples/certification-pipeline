@@ -1,7 +1,13 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
 import org.springframework.stereotype.Service;
+import uk.ac.ebi.biosamples.certpipeline.model.CertificationResult;
+import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
 import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
+import uk.ac.ebi.biosamples.certpipeline.model.Sample;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Service
 public class Pipeline {
@@ -25,6 +31,13 @@ public class Pipeline {
     }
 
     public RecorderResult run(String data) {
-        return recorder.record(certifier.certify(curator.runCurationPlans(interrogator.interrogate(identifier.identify(data)))));
+        Set<CertificationResult> certificationResults = new LinkedHashSet<>();
+        Sample rawSample = identifier.identify(data);
+        certificationResults.add(certifier.certify(rawSample));
+        PlanResult planResult = curator.runCurationPlans(interrogator.interrogate(rawSample));
+        if (planResult.curationsMade()) {
+            certificationResults.add(certifier.certify(planResult));
+        }
+        return recorder.record(certificationResults);
     }
 }

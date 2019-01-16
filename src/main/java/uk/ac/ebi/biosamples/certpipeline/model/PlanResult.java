@@ -3,7 +3,7 @@ package uk.ac.ebi.biosamples.certpipeline.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanResult {
+public class PlanResult implements HasCuratedSample, HasPlan {
 
     private final Sample sample;
 
@@ -23,6 +23,15 @@ public class PlanResult {
 
     public List<CurationResult> getCurationResults() {
         return curationResults;
+    }
+
+    public boolean curationsMade() {
+        for (CurationResult curationResult : curationResults) {
+            if (curationResult.isApplied()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Sample getSample() {
