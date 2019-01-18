@@ -14,6 +14,7 @@ import java.nio.file.Files;
 
 import static java.nio.file.Paths.get;
 
+/*
 @Component
 @ConditionalOnProperty(prefix = "job.autorun", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class CLI implements CommandLineRunner {
@@ -33,3 +34,5 @@ public class CLI implements CommandLineRunner {
         return new String(encoded, encoding);
     }
 }
+*/
+

@@ -30,7 +30,7 @@ bootRun.systemProperties = System.properties
 dependencies {
     implementation('com.fasterxml.jackson.core:jackson-databind:2.9.4')
     implementation('com.github.everit-org.json-schema:org.everit.json.schema:1.9.2')
-    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('de.codecentric:spring-boot-admin-starter-client:2.1.0')
     implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('commons-io:commons-io:2.6')
