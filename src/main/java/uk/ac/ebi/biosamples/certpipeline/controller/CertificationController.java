@@ -8,14 +8,14 @@ import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 import uk.ac.ebi.biosamples.certpipeline.service.Pipeline;
 
 @RestController
-public class PipelineController {
+public class CertificationController {
 
     @Autowired
     private Pipeline pipeline;
 
-    @PostMapping("/")
-    public RecorderResult submitToPipeline(@RequestBody String body) {
-        return pipeline.run(body);
+    @PostMapping("/certify")
+    public RecorderResult certify(@RequestBody String sampleJson) {
+        return pipeline.run(sampleJson);
     }
 
 }
