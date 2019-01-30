@@ -4,7 +4,7 @@ WORKDIR $APP_HOME
 COPY build.gradle settings.gradle gradlew $APP_HOME
 COPY gradle $APP_HOME/gradle
 
-# download dependencies this will the build but it optimises layer usage
+# download dependencies this will fail the build but it optimises layer usage
 RUN ./gradlew build || return 0
 COPY . .
 RUN ./gradlew build

@@ -11,6 +11,7 @@ import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringRunner.class)
@@ -24,13 +25,21 @@ public class PipelineTest {
     public void given_ncbi_sample_run_pipeline_for_SAMN03894263() throws IOException {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
         RecorderResult rr = pipeline.run(data);
-        assertFalse(rr.getCertificates().isEmpty());
+        assertEquals(2,rr.getCertificates().size());
     }
 
     @Test
     public void given_ncbi_sample_run_pipeline_for_SAMN03894261() throws IOException {
         String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894261.json"), "UTF8");
         RecorderResult rr = pipeline.run(data);
-        assertFalse(rr.getCertificates().isEmpty());
+        assertEquals(2,rr.getCertificates().size());
     }
+
+    @Test
+    public void given_ncbi_sample_run_pipeline_for_SAMD00141632() throws IOException {
+        String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMD00141632.json"), "UTF8");
+        RecorderResult rr = pipeline.run(data);
+        assertEquals(2,rr.getCertificates().size());
+    }
+
 }
