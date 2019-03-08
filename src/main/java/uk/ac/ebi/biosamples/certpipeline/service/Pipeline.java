@@ -1,5 +1,6 @@
 package uk.ac.ebi.biosamples.certpipeline.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.biosamples.certpipeline.model.CertificationResult;
 import uk.ac.ebi.biosamples.certpipeline.model.PlanResult;
@@ -22,7 +23,7 @@ public class Pipeline {
 
     private Recorder recorder;
 
-    public Pipeline(Certifier certifier, Curator curator, Identifier identifier, Interrogator interrogator, Recorder recorder) {
+    public Pipeline(Certifier certifier, Curator curator, Identifier identifier, Interrogator interrogator, @Qualifier("nullRecorder") Recorder recorder) {
         this.certifier = certifier;
         this.curator = curator;
         this.identifier = identifier;

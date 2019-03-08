@@ -1,371 +1,297 @@
 {
-  "name": "CVM N48676",
-  "accession": "SAMN03894263",
-  "domain": "self.BiosampleImportNCBI",
-  "release": "2015-08-10T06:44:40.400Z",
-  "update": "2016-02-19T12:22:48.062Z",
-  "taxId": 1620419,
   "characteristics": {
-    "AssemblyVersion": [
-      {
-        "text": "CLC Genomics Workbench v. 6.0.2"
-      }
-    ],
-    "INSDC center name": [
-      {
-        "text": "FDA"
-      }
-    ],
-    "INSDC first public": [
-      {
-        "text": "2015-08-10T06:44:40.400Z"
-      }
-    ],
-    "INSDC last update": [
-      {
-        "text": "2016-02-19T12:22:48.062Z"
-      }
-    ],
-    "INSDC secondary accession": [
-      {
-        "text": "SRS1102063"
-      }
-    ],
-    "INSDC status": [
-      {
-        "text": "public"
-      }
-    ],
+    "strain": [{"text": "CVM N48676"}],
+    "INSDC first public": [{"text": "2015-08-10T06:44:40.400Z"}],
+    "INSDC secondary accession": [{"text": "SRS1102063"}],
+    "organism": [{
+      "ontologyTerms": ["http://purl.obolibrary.org/obo/NCBITaxon_1620419"],
+      "text": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-"
+    }],
+    "collection date": [{"text": "2013"}],
+    "isolation source": [{"text": "Chicken Breast"}],
     "NCBI submission model": [
+      {"text": "Pathogen.env"},
+      {"text": "environmental/food/other"}
+    ],
+    "collected by": [{"text": "FDA"}],
+    "INSDC last update": [{"text": "2016-02-19T12:22:48.062Z"}],
+    "SequencingTechnology": [{"text": "Illumina MiSeq"}],
+    "description title": [{"text": "Pathogen: environmental/food/other sample from Salmonella enterica subsp. enterica serovar Typhimurium var. 5-"}],
+    "INSDC status": [{"text": "public"}],
+    "AssemblyVersion": [{"text": "CLC Genomics Workbench v. 6.0.2"}],
+    "NCBI submission package": [{"text": "Pathogen.env.1.0"}],
+    "latitude and longitude": [{"text": "missing"}],
+    "serovar": [{"text": "Typhimurium var. 5-"}],
+    "INSDC center name": [{"text": "FDA"}],
+    "geographic location": [{"text": "USA: CT"}]
+  },
+  "updateDate": "2016-02-19",
+  "data": [{
+    "schema": "test",
+    "type": "AMR",
+    "content": [
       {
-        "text": "Pathogen.env"
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "32",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "cefoxitin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": "=="
       },
       {
-        "text": "environmental/food/other"
-      }
-    ],
-    "NCBI submission package": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "1",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "gentamicin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "=="
+      },
       {
-        "text": "Pathogen.env.1.0"
-      }
-    ],
-    "SequencingTechnology": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "0.12/2.38",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "trimethoprim-sulfamethoxazole",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "<="
+      },
       {
-        "text": "Illumina MiSeq"
-      }
-    ],
-    "collected by": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "8",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "ceftriaxone",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": "=="
+      },
       {
-        "text": "FDA"
-      }
-    ],
-    "collection date": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "0.015",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "ciprofloxacin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "<="
+      },
       {
-        "text": "2013"
-      }
-    ],
-    "description title": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "4",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "chloramphenicol",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "=="
+      },
       {
-        "text": "Pathogen: environmental/food/other sample from Salmonella enterica subsp. enterica serovar Typhimurium var. 5-"
-      }
-    ],
-    "geographic location": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "32",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "tetracycline",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": ">"
+      },
       {
-        "text": "USA: CT"
-      }
-    ],
-    "isolation source": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "4",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "nalidixic acid",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "=="
+      },
       {
-        "text": "Chicken Breast"
-      }
-    ],
-    "latitude and longitude": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "32",
+        "ast_standard": "missing",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "streptomycin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "<="
+      },
       {
-        "text": "missing"
-      }
-    ],
-    "organism": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "256",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "sulfisoxazole",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": ">"
+      },
       {
-        "text": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-        "ontologyTerms": [
-          "http://purl.obolibrary.org/obo/NCBITaxon_1620419"
-        ]
-      }
-    ],
-    "serovar": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "32",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "ampicillin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": ">"
+      },
       {
-        "text": "Typhimurium var. 5-"
-      }
-    ],
-    "strain": [
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "2",
+        "ast_standard": "missing",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "azithromycin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "=="
+      },
       {
-        "text": "CVM N48676"
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "8",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "ceftiofur",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": "=="
+      },
+      {
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "8",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "kanamycin",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "susceptible",
+        "measurement_sign": "<="
+      },
+      {
+        "laboratory_typing_method_version_or_reagent": "96-Well Plate",
+        "dst_media": null,
+        "platform": "",
+        "measurement": "32/16",
+        "ast_standard": "CLSI",
+        "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
+        "laboratory_typing_method": "MIC",
+        "vendor": "Trek",
+        "critical_concentration": null,
+        "breakpoint_version": null,
+        "dst_method": null,
+        "antibiotic_name": "amoxicillin-clavulanic acid",
+        "measurement_units": "mg/L",
+        "resistance_phenotype": "resistant",
+        "measurement_sign": ">"
       }
     ]
-  },
+  }],
   "releaseDate": "2015-08-10",
-  "updateDate": "2016-02-19",
-  "data": [
-    {
-      "type": "AMR",
-      "schema": "test",
-      "content": [
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "cefoxitin",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "32"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "gentamicin",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "1"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "trimethoprim-sulfamethoxazole",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "<=",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "0.12/2.38"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "ceftriaxone",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "8"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "ciprofloxacin",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "<=",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "0.015"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "chloramphenicol",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "4"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "tetracycline",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": ">",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "32"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "nalidixic acid",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "4"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "streptomycin",
-          "ast_standard": "missing",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "<=",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "32"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "sulfisoxazole",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": ">",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "256"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "ampicillin",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": ">",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "32"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "azithromycin",
-          "ast_standard": "missing",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "2"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "ceftiofur",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "==",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "8"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "kanamycin",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": "<=",
-          "resistance_phenotype": "susceptible",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "8"
-        },
-        {
-          "species": "Salmonella enterica subsp. enterica serovar Typhimurium var. 5-",
-          "antibiotic_name": "amoxicillin-clavulanic acid",
-          "ast_standard": "CLSI",
-          "breakpoint_version": null,
-          "laboratory_typing_method": "MIC",
-          "measurement_units": "mg/L",
-          "measurement_sign": ">",
-          "resistance_phenotype": "resistant",
-          "platform": "",
-          "vendor": "Trek",
-          "laboratory_typing_method_version_or_reagent": "96-Well Plate",
-          "dst_media": null,
-          "dst_method": null,
-          "critical_concentration": null,
-          "measurement": "32/16"
-        }
-      ]
-    }
-  ]
+  "release": "2015-08-10T06:44:40.400Z",
+  "taxId": 1620419,
+  "domain": "self.BiosampleImportNCBI",
+  "name": "CVM N48676",
+  "update": "2016-02-19T12:22:48.062Z",
+  "accession": "SAMN03894263"
 }
