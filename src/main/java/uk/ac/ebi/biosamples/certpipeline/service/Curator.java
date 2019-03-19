@@ -14,6 +14,7 @@ import java.util.Map;
 @Service
 public class Curator {
 
+    private static Logger LOG = LoggerFactory.getLogger(Curator.class);
     private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     private ConfigLoader configLoader;
@@ -24,13 +25,17 @@ public class Curator {
         this.configLoader = configLoader;
     }
 
-    public PlanResult runCurationPlans(InterrogationResult interrogationResult) {
-        if (interrogationResult == null) {
-            throw new IllegalArgumentException("cannot run curation plans on null checklist matches");
-        }
+    public List<PlanResult> runCurationPlans(InterrogationResult interrogationResult) {
         List<PlanResult> planResults = new ArrayList<>();
-        if (interrogationResult.getChecklists().isEmpty()) {
-            return null;
+        if (interrogationResult == null) {
+            String message = "cannot run curation plans on null interrogation result";
+            LOG.warn(message);
+            throw new IllegalArgumentException(message);
+        }
+        if (interrogationResult.getSample() == null) {
+            String message = "cannot run curation plans on null sample";
+            LOG.warn(message);
+            throw new IllegalArgumentException(message);
         }
         for (Checklist checklist : interrogationResult.getChecklists()) {
             PlanResult planResult = runCurationPlan(checklist, interrogationResult.getSample());
@@ -38,12 +43,16 @@ public class Curator {
                 planResults.add(planResult);
             }
         }
-        return planResults.get(0);
+        return planResults;
     }
 
     private PlanResult runCurationPlan(Checklist checklist, Sample sample) {
         Plan plan = plansByCandidateChecklistID.get(checklist.getID());
         PlanResult planResult = new PlanResult(sample, plan);
+        if (plan == null) {
+            EVENTS.info(String.format("%s plan not found for %s", sample.getAccession(), checklist.getID()));
+            return planResult;
+        }
         if (plansByCandidateChecklistID.containsKey(checklist.getID())) {
             for (Curation curation : plan.getCurations()) {
                 CurationResult curationResult = plan.applyCuration(sample, curation);

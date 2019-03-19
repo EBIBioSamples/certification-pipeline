@@ -24,6 +24,12 @@ public class NullRecorder implements Recorder {
         for (CertificationResult certificationResult : certificationResults) {
             for (Certificate certificate : certificationResult.getCertificates()) {
                 recorderResult.add(certificate);
+                try {
+                    //simulate a write with a short pause
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                    LOG.warn("pause interupted", e);
+                }
                 EVENTS.info(String.format("%s recorded %s certificate", certificate.getSample().getAccession(), certificate.getChecklist().getID()));
             }
         }

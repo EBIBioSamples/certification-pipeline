@@ -8,6 +8,7 @@ import uk.ac.ebi.biosamples.certpipeline.model.RecorderResult;
 import uk.ac.ebi.biosamples.certpipeline.model.Sample;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -35,9 +36,11 @@ public class Pipeline {
         Set<CertificationResult> certificationResults = new LinkedHashSet<>();
         Sample rawSample = identifier.identify(data);
         certificationResults.add(certifier.certify(rawSample));
-        PlanResult planResult = curator.runCurationPlans(interrogator.interrogate(rawSample));
-        if (planResult.curationsMade()) {
-            certificationResults.add(certifier.certify(planResult));
+        List<PlanResult> planResults = curator.runCurationPlans(interrogator.interrogate(rawSample));
+        for (PlanResult planResult : planResults) {
+            if (planResult.curationsMade()) {
+                certificationResults.add(certifier.certify(planResult));
+            }
         }
         return recorder.record(certificationResults);
     }

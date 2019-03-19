@@ -14,11 +14,13 @@ import java.util.regex.Pattern;
 @Service
 public class Applicator {
 
-    private static Logger LOG = LoggerFactory.getLogger(Certifier.class);
+    private static Logger LOG = LoggerFactory.getLogger(Applicator.class);
 
     public Sample apply(HasCuratedSample curationApplicable) {
         if (curationApplicable == null) {
-            throw new IllegalArgumentException("cannot apply a null curation applyable");
+            String message = "cannot apply a null curation applyable";
+            LOG.warn(message);
+            throw new IllegalArgumentException(message);
         }
         Sample sample = curationApplicable.getSample();
         String document = makePretty(sample.getDocument());

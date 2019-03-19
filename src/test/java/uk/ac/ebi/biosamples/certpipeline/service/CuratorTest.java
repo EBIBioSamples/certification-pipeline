@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -30,20 +31,38 @@ public class CuratorTest {
 
     @Test
     public void given_ChecklistMatches_run_curation_plans() throws Exception {
-        String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
-        Sample sample = new Sample("test", data);
         List<Checklist> checklistList = new ArrayList<>();
         checklistList = Collections.singletonList(new Checklist("ncbi", "0.0.1", "schemas/ncbi-candidate-schema.json"));
-        InterrogationResult interrogationResult = new InterrogationResult(sample, checklistList);
-        PlanResult planResult = curator.runCurationPlans(interrogationResult);
-        assertNotNull(planResult.getSample());
-        assertFalse(planResult.getCurationResults().isEmpty());
-        assertEquals("live", planResult.getCurationResults().get(0).getBefore());
-        assertEquals("public", planResult.getCurationResults().get(0).getAfter());
+        InterrogationResult interrogationResult = new InterrogationResult(testSample(), checklistList);
+        List<PlanResult> planResults = curator.runCurationPlans(interrogationResult);
+        for (PlanResult planResult : planResults) {
+            assertNotNull(planResult.getSample());
+            assertFalse(planResult.getCurationResults().isEmpty());
+            assertEquals("live", planResult.getCurationResults().get(0).getBefore());
+            assertEquals("public", planResult.getCurationResults().get(0).getAfter());
+        }
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void given_null_checklistMatches_throw_exception() throws IOException {
         curator.runCurationPlans(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void given_null_sample_checklistMatches_throw_exception() throws IOException {
+        InterrogationResult interrogationResult = new InterrogationResult(null, Collections.EMPTY_LIST);
+        curator.runCurationPlans(interrogationResult);
+    }
+
+    @Test
+    public void given_sample_and_no_checklists_checklistMatches_return_empty_plan_results() throws IOException {
+        InterrogationResult interrogationResult = new InterrogationResult(testSample(), Collections.EMPTY_LIST);
+        assertTrue(curator.runCurationPlans(interrogationResult).isEmpty());
+    }
+
+    private Sample testSample() throws IOException {
+        String data = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("json/ncbi-SAMN03894263.json"), "UTF8");
+        Sample sample = new Sample("test", data);
+        return sample;
     }
 }

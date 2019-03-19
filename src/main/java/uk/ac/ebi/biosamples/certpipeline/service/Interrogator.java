@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class Interrogator {
 
-    private static Logger LOG = LoggerFactory.getLogger(Certifier.class);
+    private static Logger LOG = LoggerFactory.getLogger(Interrogator.class);
     private static Logger EVENTS = LoggerFactory.getLogger("events");
 
     private ConfigLoader configLoader;
@@ -28,20 +28,22 @@ public class Interrogator {
 
     public InterrogationResult interrogate(Sample sample) {
         if (sample == null) {
-            throw new IllegalArgumentException("cannot interrogate a null sample");
+            String message = "cannot interrogate a null sample";
+            LOG.warn(message);
+            throw new IllegalArgumentException(message);
         }
-        List<Checklist> matches = new ArrayList<>();
+        List<Checklist> checklists = new ArrayList<>();
         for (Checklist checklist : configLoader.config.getChecklists()) {
             try {
                 validator.validate(checklist.getFileName(), sample.getDocument());
                 EVENTS.info(String.format("%s interrogation successful against %s", sample.getAccession(), checklist.getID()));
-                matches.add(checklist);
+                checklists.add(checklist);
             } catch (IOException ioe) {
                 LOG.error(String.format("cannot open schema at %s", checklist.getFileName()), ioe);
             } catch (ValidationException ve) {
                 EVENTS.info(String.format("%s interrogation failed against %s", sample.getAccession(), checklist.getID()));
             }
         }
-        return new InterrogationResult(sample, matches);
+        return new InterrogationResult(sample, checklists);
     }
 }
