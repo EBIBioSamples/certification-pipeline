@@ -14,7 +14,7 @@
         <graylogHost>biosamples-ops</graylogHost>
         <graylogPort>12201</graylogPort>
         <layout class="de.siegmar.logbackgelf.GelfLayout">
-            <staticField>application:certification-pipeline</staticField>
+            <staticField>application:certification-service</staticField>
         </layout>
     </appender>
 
