@@ -10,11 +10,11 @@ A project for the automatic curation, validation and certification of BioSamples
 
 ![Certification Service Flow](images/cert-service.png?raw=true "Certification Service Flow")
 
-[1]: https://travis-ci.org/EBIBioSamples/certification-service-java.svg?branch=master
-[2]: https://travis-ci.org/EBIBioSamples/certification-service-java
-[3]: https://codecov.io/gh/EBIBioSamples/certification-service-java/branch/master/graph/badge.svg
-[4]: https://codecov.io/gh/EBIBioSamples/certification-service-java
+[1]: https://travis-ci.org/EBIBioSamples/certification-pipeline-java.svg?branch=master
+[2]: https://travis-ci.org/EBIBioSamples/certification-pipeline-java
+[3]: https://codecov.io/gh/EBIBioSamples/certification-pipeline-java/branch/master/graph/badge.svg
+[4]: https://codecov.io/gh/EBIBioSamples/certification-pipeline-java
 [5]: https://api.codeclimate.com/v1/badges/f149ddce987ecfe9948f/maintainability
-[6]: https://codeclimate.com/github/EBIBioSamples/certification-service-java/maintainability
-[7]: https://quay.io/repository/ebibiosamples/certification-service-java/status
-[8]: https://quay.io/repository/ebibiosamples/certification-service-java
+[6]: https://codeclimate.com/github/EBIBioSamples/certification-pipeline-java/maintainability
+[7]: https://quay.io/repository/ebibiosamples/certification-pipeline-java/status
+[8]: https://quay.io/repository/ebibiosamples/certification-pipeline-java
